@@ -1,4 +1,5 @@
 class AddTask extends HTMLElement {
+
     constructor() {
         super();
         this.setupTemplate();
@@ -88,7 +89,7 @@ class AddTask extends HTMLElement {
             newTask.shadowRoot.querySelector("p").innerText = data.get("day");
             
             container.appendChild(newTask);
-        })
+        });
     }
 
     disconnectedCallback() {

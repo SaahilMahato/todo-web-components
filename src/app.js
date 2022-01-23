@@ -27,7 +27,7 @@ class App extends HTMLElement {
 
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-    }
+    };
 }
 
 customElements.define("app-view", App);

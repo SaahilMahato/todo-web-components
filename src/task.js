@@ -13,23 +13,46 @@ class Task extends HTMLElement {
                     background: #f4f4f4;
                     margin: 5px;
                     padding: 10px 20px;
-                    cursor: pointer;
-                }
-                .task h3 {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                 }
+
+                button {
+                    background-color: red;
+                    color: white;
+                    cursor: pointer;
+                    border: none;
+                    width: 100px;
+                    height: 40px;
+                    border-radius: 100px;
+                }
             </style>
             
             <div class="task">
-                <h3></h3>
-                <p></p>
+                <div>
+                    <h3></h3>
+                    <p></p>
+                </div>
+                <button>Delete</button>
             </div>
         `
 
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    }
+
+    connectedCallback() {
+        const button = this.shadowRoot.querySelector("button");
+        button.addEventListener("click", () => {
+            const container = document.querySelector("app-view").shadowRoot.querySelector(".container");
+            container.removeChild(this);
+        });
+    }
+
+    disconnectedCallback() {
+        const button = this.shadowRoot.querySelector("button");
+        button.removeEventListener();
     }
 }
 

@@ -1,7 +1,7 @@
 class AddTask extends HTMLElement {
     constructor() {
-    super();
-    this.setupTemplate();
+        super();
+        this.setupTemplate();
     }
 
     setupTemplate = () => {
@@ -48,13 +48,12 @@ class AddTask extends HTMLElement {
                 }
 
                 .form-control input {
-                    width: 100%;
+                    width: 96%;
                     height: 40px;
                     margin: 5px;
                     padding: 3px 7px;
                     font-size: 17px;
                 }
-
             </style>
 
             <form class='add-form'>
@@ -88,6 +87,11 @@ class AddTask extends HTMLElement {
             
             container.appendChild(newTask);
         })
+    }
+
+    disconnectedCallback() {
+        const form = this.shadowRoot.querySelector(".add-form");
+        form.removeEventListener();
     }
 }
 

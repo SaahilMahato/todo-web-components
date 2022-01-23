@@ -13,7 +13,7 @@ class App extends HTMLElement {
                     max-width: 500px;
                     margin: 30px auto;
                     overflow: auto;
-                    min-height: 300px;
+                    min-height: 100px;
                     border: 1px solid steelblue;
                     padding: 30px;
                     border-radius: 5px;

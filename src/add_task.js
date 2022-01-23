@@ -37,10 +37,12 @@ class AddTask extends HTMLElement {
 
                 .add-form {
                     margin-bottom: 40px;
+                    width: 100%;
                 }
 
                 .form-control {
                     margin: 20px 0;
+                    width: 100%;
                 }
 
                 .form-control label {
@@ -48,11 +50,11 @@ class AddTask extends HTMLElement {
                 }
 
                 .form-control input {
-                    width: 96%;
+                    width: 97%;
                     height: 40px;
-                    margin: 5px;
-                    padding: 3px 7px;
-                    font-size: 17px;
+                    margin: 5px 0;
+                    padding: 4px 8px;
+                    font-size: 18px;
                 }
             </style>
 

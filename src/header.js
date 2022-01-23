@@ -35,7 +35,6 @@ class Header extends HTMLElement {
                 <h1>Todo App</h1>
                 <button class="btn">Add</button>
             </header>
-            <add-form></add-form>
         `
 
         this.attachShadow({ mode: 'open' });
@@ -43,7 +42,7 @@ class Header extends HTMLElement {
     }
 
     toggleAddForm = () => {
-        const form = this.shadowRoot.querySelector('add-form');
+        const form =  document.querySelector("app-view").shadowRoot.querySelector("add-form");
         if (form.style.display !== "none")
             form.style.display = "none";
         else
@@ -51,7 +50,7 @@ class Header extends HTMLElement {
     }
 
     connectedCallback() {
-        this.shadowRoot.querySelector('add-form').style.display = "none";
+        document.querySelector("app-view").shadowRoot.querySelector("add-form").style.display = "none";
         this.shadowRoot.querySelector('.btn').addEventListener('click', () => {
             this.toggleAddForm();
         })

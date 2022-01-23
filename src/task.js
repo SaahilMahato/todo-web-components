@@ -23,8 +23,8 @@ class Task extends HTMLElement {
             </style>
             
             <div class="task">
-                <h3>Task title</h3>
-                <p>Task time</p>
+                <h3></h3>
+                <p></p>
             </div>
         `
 

@@ -21,7 +21,7 @@ class App extends HTMLElement {
             </style>
             <div class="container">
                 <app-header></app-header>
-                <task-view></task-view>
+                <add-form></add-form>
             </div>
         `
 

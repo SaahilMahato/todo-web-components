@@ -1,12 +1,12 @@
 class AddTask extends HTMLElement {
-  constructor() {
+    constructor() {
     super();
     this.setupTemplate();
-  }
+    }
 
-  setupTemplate = () => {
-    this.template = document.createElement("template");
-    this.template.innerHTML = `
+    setupTemplate = () => {
+        this.template = document.createElement("template");
+        this.template.innerHTML = `
             <style>
                 .btn {
                     display: inline-block;
@@ -60,19 +60,35 @@ class AddTask extends HTMLElement {
             <form class='add-form'>
                 <div class='form-control'>
                     <label>Task</label>
-                    <input type='text' placeholder='Add Task' />
+                    <input type='text' placeholder='Add Task' name="title"/>
                 </div>
                 <div class='form-control'>
                     <label>Day and Time</label>
-                    <input type='text' placeholder='Add Day and Time' />
+                    <input type='text' placeholder='Add Day and Time' name="day"/>
                 </div>
                 <input class='btn btn-block' type='submit' value='Save Task' />
             </form>
         `;
 
-    this.attachShadow({ mode: "open" });
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-  };
+        this.attachShadow({ mode: "open" });
+        this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    };
+
+    connectedCallback() {
+        const form = this.shadowRoot.querySelector(".add-form");
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(e.target);
+
+            const container = document.querySelector("app-view").shadowRoot.querySelector(".container");
+            
+            const newTask = document.createElement("task-view");
+            newTask.shadowRoot.querySelector("h3").innerText = data.get("title");
+            newTask.shadowRoot.querySelector("p").innerText = data.get("day");
+            
+            container.appendChild(newTask);
+        })
+    }
 }
 
 customElements.define("add-form", AddTask);

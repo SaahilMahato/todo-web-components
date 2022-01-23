@@ -62,11 +62,11 @@ class AddTask extends HTMLElement {
             <form class='add-form'>
                 <div class='form-control'>
                     <label>Task</label>
-                    <input type='text' placeholder='Add Task' name="title"/>
+                    <input type='text' placeholder='Add Task' name="title" required/>
                 </div>
                 <div class='form-control'>
                     <label>Day and Time</label>
-                    <input type='text' placeholder='Add Day and Time' name="day"/>
+                    <input type='text' placeholder='Add Day and Time' name="day" required/>
                 </div>
                 <input class='btn btn-block' type='submit' value='Save Task' />
             </form>

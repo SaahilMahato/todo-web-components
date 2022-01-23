@@ -6,8 +6,8 @@ class Header extends HTMLElement {
     }
 
     setupTemplate = () => {
-        this.template = document.createElement('template');
-        this.template.innerHTML = `
+        const template = document.createElement('template');
+        template.innerHTML = `
             <style>
                 .header {
                     display: flex;
@@ -38,7 +38,7 @@ class Header extends HTMLElement {
         `
 
         this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     };
 
     connectedCallback() {

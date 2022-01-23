@@ -6,8 +6,8 @@ class App extends HTMLElement {
     }
 
     setupTemplate = () => {
-        this.template = document.createElement('template');
-        this.template.innerHTML = `
+        const template = document.createElement('template');
+        template.innerHTML = `
             <style>
                 .container {
                     max-width: 500px;
@@ -26,7 +26,7 @@ class App extends HTMLElement {
         `
 
         this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     };
 }
 

@@ -6,8 +6,8 @@ class AddTask extends HTMLElement {
     }
 
     setupTemplate = () => {
-        this.template = document.createElement("template");
-        this.template.innerHTML = `
+        const template = document.createElement("template");
+        template.innerHTML = `
             <style>
                 .btn {
                     display: inline-block;
@@ -73,7 +73,7 @@ class AddTask extends HTMLElement {
         `;
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     };
 
     connectedCallback() {

@@ -76,25 +76,27 @@ class AddTask extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     };
 
+    addNewTask = (e) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+
+        const container = document.querySelector("app-view").shadowRoot.querySelector(".container");
+        
+        const newTask = document.createElement("task-view");
+        newTask.shadowRoot.querySelector("h3").innerText = data.get("title");
+        newTask.shadowRoot.querySelector("p").innerText = data.get("day");
+        
+        container.appendChild(newTask);
+    }
+
     connectedCallback() {
         const form = this.shadowRoot.querySelector(".add-form");
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const data = new FormData(e.target);
-
-            const container = document.querySelector("app-view").shadowRoot.querySelector(".container");
-            
-            const newTask = document.createElement("task-view");
-            newTask.shadowRoot.querySelector("h3").innerText = data.get("title");
-            newTask.shadowRoot.querySelector("p").innerText = data.get("day");
-            
-            container.appendChild(newTask);
-        });
+        form.addEventListener("submit", e => this.addNewTask(e));
     }
 
     disconnectedCallback() {
         const form = this.shadowRoot.querySelector(".add-form");
-        form.removeEventListener();
+        form.removeEventListener("submit", e => this.addNewTask(e));
     }
 }
 

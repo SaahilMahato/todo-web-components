@@ -43,17 +43,19 @@ class Task extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
+    deleteTask = () => {
+        const container = document.querySelector("app-view").shadowRoot.querySelector(".container");
+        container.removeChild(this);
+    }
+
     connectedCallback() {
-        const button = this.shadowRoot.querySelector("button");
-        button.addEventListener("click", () => {
-            const container = document.querySelector("app-view").shadowRoot.querySelector(".container");
-            container.removeChild(this);
-        });
+        const deleteButton = this.shadowRoot.querySelector("button");
+        deleteButton.addEventListener("click", this.deleteTask);
     }
 
     disconnectedCallback() {
-        const button = this.shadowRoot.querySelector("button");
-        button.removeEventListener();
+        const deleteButton = this.shadowRoot.querySelector("button");
+        deleteButton.removeEventListener("click", this.deleteTask);
     }
 }
 

@@ -41,23 +41,25 @@ class Header extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     };
 
+    toggleAddForm = () => {
+        const form =  document.querySelector("app-view").shadowRoot.querySelector("add-form");
+        if (form.style.display !== "none")
+            form.style.display = "none";
+        else
+            form.style.display = "block";
+    }
+
     connectedCallback() {
         const form = document.querySelector("app-view").shadowRoot.querySelector("add-form");
         form.style.display = "none";
 
         const addButton = this.shadowRoot.querySelector(".btn");
-        addButton.addEventListener('click', () => {
-            const form =  document.querySelector("app-view").shadowRoot.querySelector("add-form");
-            if (form.style.display !== "none")
-                form.style.display = "none";
-            else
-                form.style.display = "block";
-        });
+        addButton.addEventListener("click", this.toggleAddForm);
     }
 
     disconnectedCallback() {
         const addButton = this.shadowRoot.querySelector(".btn");
-        addButton.removeEventListener();
+        addButton.removeEventListener("click", this.toggleAddForm);
     }
 }
 

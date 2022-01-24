@@ -1,4 +1,4 @@
-class App extends HTMLElement {
+class AppView extends HTMLElement {
 
     constructor() {
         super();
@@ -21,7 +21,7 @@ class App extends HTMLElement {
             </style>
             <div class="container">
                 <app-header></app-header>
-                <add-form></add-form>
+                <add-task></add-task>
             </div>
         `
 
@@ -30,4 +30,4 @@ class App extends HTMLElement {
     };
 }
 
-customElements.define("app-view", App);
+customElements.define("app-view", AppView);

@@ -87,11 +87,15 @@ class AddTask extends HTMLElement {
         newTask.shadowRoot.querySelector("p").innerText = data.get("day");
         
         container.appendChild(newTask);
+
     }
 
     connectedCallback() {
         const form = this.shadowRoot.querySelector(".add-form");
-        form.addEventListener("submit", e => this.addNewTask(e));
+        form.addEventListener("submit", e => {
+            this.addNewTask(e);
+            form.reset();
+        });
     }
 
     disconnectedCallback() {
@@ -100,4 +104,4 @@ class AddTask extends HTMLElement {
     }
 }
 
-customElements.define("add-form", AddTask);
+customElements.define("add-task", AddTask);

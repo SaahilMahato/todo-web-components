@@ -1,4 +1,4 @@
-class Header extends HTMLElement {
+class AppHeader extends HTMLElement {
 
     constructor() {
         super();
@@ -42,7 +42,7 @@ class Header extends HTMLElement {
     };
 
     toggleAddForm = () => {
-        const form =  document.querySelector("app-view").shadowRoot.querySelector("add-form");
+        const form =  document.querySelector("app-view").shadowRoot.querySelector("add-task");
         if (form.style.display !== "none")
             form.style.display = "none";
         else
@@ -50,7 +50,7 @@ class Header extends HTMLElement {
     }
 
     connectedCallback() {
-        const form = document.querySelector("app-view").shadowRoot.querySelector("add-form");
+        const form = document.querySelector("app-view").shadowRoot.querySelector("add-task");
         form.style.display = "none";
 
         const addButton = this.shadowRoot.querySelector(".btn");
@@ -63,4 +63,4 @@ class Header extends HTMLElement {
     }
 }
 
-customElements.define("app-header", Header);
+customElements.define("app-header", AppHeader);

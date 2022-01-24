@@ -1,4 +1,4 @@
-class Task extends HTMLElement {
+class TaskView extends HTMLElement {
 
     constructor() {
         super();
@@ -59,4 +59,4 @@ class Task extends HTMLElement {
     }
 }
 
-customElements.define("task-view", Task);
+customElements.define("task-view", TaskView);

@@ -100,7 +100,10 @@ class AddTask extends HTMLElement {
 
     disconnectedCallback() {
         const form = this.shadowRoot.querySelector(".add-form");
-        form.removeEventListener("submit", e => this.addNewTask(e));
+        form.removeEventListener("submit", e => {
+            this.addNewTask(e);
+            form.reset();
+        });
     }
 }
 

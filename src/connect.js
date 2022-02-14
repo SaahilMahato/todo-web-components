@@ -21,5 +21,6 @@ const db = getFirestore();
 
 export {
     db,
-    collection, addDoc
+    collection, 
+    addDoc
 }

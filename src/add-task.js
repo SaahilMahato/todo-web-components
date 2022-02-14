@@ -1,8 +1,4 @@
-import { 
-    db, 
-    collection, 
-    addDoc 
-} from "./connect.js";
+import { addNewTodo } from "./service.js";
 
 class AddTask extends HTMLElement {
 
@@ -82,7 +78,7 @@ class AddTask extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     };
 
-    addNewTask = async (e) => {
+    addNewTask = (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
 
@@ -94,15 +90,7 @@ class AddTask extends HTMLElement {
         
         container.appendChild(newTask);
 
-        try {
-            const docRef = await addDoc(collection(db, "todos"), {
-                title: data.get("title"),
-                day: data.get("day")
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
+        addNewTodo(data.get("title"), data.get("day"));
     }
 
     connectedCallback() {
